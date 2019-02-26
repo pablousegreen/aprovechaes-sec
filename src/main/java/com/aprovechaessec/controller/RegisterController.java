@@ -27,12 +27,13 @@ public class RegisterController {
 	
 	@PostMapping("/register")
 	public String registerUser(@Valid User user, BindingResult bindingResult, Model model) {
-		if(bindingResult.hasErrors()) {
+		if(bindingResult.hasErrors() || user == null) {
 			return "views/registerForm";
 		}
 		
-		if(userService.isUserPresent(user.getEmail())) {
+		if(userService.isUserPresent(user.getEmail().trim().toLowerCase())) {
 			model.addAttribute("exist", true);
+			model.addAttribute("user", user);	
 			return "views/registerForm";
 		}		
 		userService.creatUser(user);

@@ -43,8 +43,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	public boolean isUserPresent(String email) {
-		User user = userRepository.findByEmail(email).get();
-		if(user!= null)
+		User user = userRepository.findByEmail(email).orElse(new User());
+		if(user!= null && user.getEmail() != null)
 			return true;
 		return false;
 	}
