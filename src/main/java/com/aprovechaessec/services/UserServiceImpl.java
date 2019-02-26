@@ -48,4 +48,14 @@ public class UserServiceImpl implements UserService {
 			return true;
 		return false;
 	}
+	
+	public List<User> getFindAll() {
+		
+		return userRepository.findAll();
+	}
+	
+	public List<User> findByName(String name){
+		List<User> users = userRepository.findByNameStartingWith(name);
+		return users;
+	}
 }
