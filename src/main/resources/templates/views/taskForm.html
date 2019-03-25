@@ -8,13 +8,18 @@
 	<div layout:fragment="content" class="container mySpace">
 		<div class="container">
 				<div class="alert alert-info" th:if="${exist}">
-						<p class="text text-center">
-								User with this Email already exist
-						</p>
+					<p class="text text-center">
+							User with this Email already exist
+					</p>
+				</div>
+				<div class="alert alert-info" th:if="${notUser}">
+					<p class="text text-center">
+							User with this Email does not exist
+					</p>
 				</div>
 				<form th:action="@{/addTask}" th:object="${task}" method="POST">
 					<div class="form-group">
-						<label for="date" class="form-control-label">Date</label>
+						<label for="Date" class="form-control-label">Date</label>
 						<input type="date" class="form-control" th:field="*{date}" id="date">
 						<div class="text text-danger" th:if="${#fields.hasErrors('date')}" th:errors="*{date}" style="border-color: #92a8d1 1px;"></div>
 					</div>

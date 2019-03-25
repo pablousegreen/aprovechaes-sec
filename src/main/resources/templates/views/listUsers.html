@@ -28,7 +28,7 @@
 							<td th:text="${user.name}"></td>
 							<td th:text="${user.email}"></td>
 							<td>
-								<a th:ref="@{/addTask(email=${user.email})}" class="btn btn-dark">Add Task</a>
+								<a th:href="@{/addTask(email=${user.email})}" class="btn btn-dark">Add Task</a>
 							</td>
 						</tr>
 					</tbody>

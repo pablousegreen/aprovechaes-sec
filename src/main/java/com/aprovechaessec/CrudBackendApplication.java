@@ -26,7 +26,7 @@ public class CrudBackendApplication implements CommandLineRunner {
 		
         // drop all hotels
 		System.out.println("**************DELETE ALL FROM USERS**************");
-//        this.userRepository.deleteAll();
-//		this.taskRepository.deleteAll();
+        this.userRepository.deleteAll();
+		this.taskRepository.deleteAll();
 	}
 }

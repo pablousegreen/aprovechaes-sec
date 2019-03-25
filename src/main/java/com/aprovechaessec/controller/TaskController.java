@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.aprovechaessec.entity.Task;
+import com.aprovechaessec.entity.User;
 import com.aprovechaessec.services.TaskService;
 import com.aprovechaessec.services.UserService;
 
@@ -31,12 +32,19 @@ public class TaskController {
 	}
 	
 	@PostMapping("/addTask")
-	public String addTask(@Valid Task task, BindingResult bindingResult, HttpSession session) {
+	public String addTask(@Valid Task task, BindingResult bindingResult, Model model, HttpSession session) {
 		if(bindingResult.hasErrors()) {
 			return "views/taskForm";
 		}
 		String email = (String)session.getAttribute("email");
-		taskService.addTask(taskService.findUserTask(userService.findOne(email)).get(0));		
+//		taskService.addTask(task, taskService.findUserTask(userService.findOne(email)).get(0));	
+		User user = userService.findOne(email);
+		if (user != null) {
+			taskService.addTask(task, user);	
+		}else {
+			model.addAttribute("notUser", false);
+			return "views/taskForm";
+		}
 		return "redirect:/users";
 	}
 }

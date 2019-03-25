@@ -1,6 +1,8 @@
 package com.aprovechaessec.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,9 +11,14 @@ public class Task {
 	
 	@Id
 	private String id;
-	private String time;
+	@NotEmpty
+	private String date;
+	@NotEmpty
 	private String startTime;
+	@NotEmpty
 	private String stopTime;
+	@NotEmpty
+	@Column(length=1000)
 	private String description;
 	private User user;
 	
@@ -21,11 +28,11 @@ public class Task {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getTime() {
-		return time;
+	public String getDate() {
+		return date;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setDate(String date) {
+		this.date = date;
 	}
 	public String getStartTime() {
 		return startTime;
@@ -51,16 +58,16 @@ public class Task {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Task(String time, String startTime, String stopTime, String description, User user) {
-		this.time = time;
+	public Task(String date, String startTime, String stopTime, String description, User user) {
+		this.date = date;
 		this.startTime = startTime;
 		this.stopTime = stopTime;
 		this.description = description;
 		this.user = user;
 	}
-	public Task(String time, String startTime, String stopTime, String description) {
+	public Task(String date, String startTime, String stopTime, String description) {
 		
-		this.time = time;
+		this.date = date;
 		this.startTime = startTime;
 		this.stopTime = stopTime;
 		this.description = description;

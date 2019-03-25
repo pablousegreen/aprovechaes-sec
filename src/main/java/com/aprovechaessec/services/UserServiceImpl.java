@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.aprovechaessec.entity.Role;
 import com.aprovechaessec.entity.User;
+import com.aprovechaessec.repositories.UserRepositoryImpl;
 import com.aprovechaessec.repositories.UserRepository;
 
 @Service
@@ -17,6 +18,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	UserRepositoryImpl userRepositoryImpl;
 	
 	public void creatUser(User user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -39,7 +43,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User findOne(String email) {
-		return userRepository.findByEmail(email).get();
+		//return userRepository.findByEmail(email).orElse(null);
+		User user = userRepositoryImpl.getUserbyEmail(email);
+		return user;
 	}
 	
 	public boolean isUserPresent(String email) {

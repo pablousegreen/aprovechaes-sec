@@ -18,4 +18,5 @@ public interface UserRepository extends MongoRepository<User, String>{
 	
 	List<User> findByNameStartingWith(String regexp);
 //	public User findById( final String id );
+	
 }
