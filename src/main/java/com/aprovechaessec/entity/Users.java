@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "User")
-public class User {
+public class Users {
 	
 	@Id
     private String id;
@@ -61,14 +61,14 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	public User(String email, String name, String password) {
+	public Users(String email, String name, String password) {
 		
 		this.email = email;
 		this.name = name;
 		this.password = password;
 	}
 	
-	public User(String email, String name, @Size(min = 4) String password, List<Task> tasks, List<Role> roles) {
+	public Users(String email, String name, @Size(min = 4) String password, List<Task> tasks, List<Role> roles) {
 //		super();
 		this.email = email;
 		this.name = name;
@@ -76,9 +76,17 @@ public class User {
 		this.tasks = tasks;
 		this.roles = roles;
 	}
+	
+	public Users(String email, String name, @Size(min = 4) String password, List<Role> roles) {
+//		super();
+		this.email = email;
+		this.name = name;
+		this.password = password;
+		this.roles = roles;
+	}
 
 	
-	public User() {
+	public Users() {
 		
 	}
 	

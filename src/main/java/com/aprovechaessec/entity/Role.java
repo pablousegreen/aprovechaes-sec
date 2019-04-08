@@ -11,9 +11,9 @@ public class Role {
 	
 	@NotEmpty
 	private String name;
-	private List<User> users;
+	private List<Users> users;
 	
-	public Role(String name, List<User> users) {
+	public Role(String name, List<Users> users) {
 		this.name = name;
 		this.users = users;
 	}
@@ -30,10 +30,10 @@ public class Role {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<User> getUsers() {
+	public List<Users> getUsers() {
 		return users;
 	}
-	public void setUsers(List<User> users) {
+	public void setUsers(List<Users> users) {
 		this.users = users;
 	}
 

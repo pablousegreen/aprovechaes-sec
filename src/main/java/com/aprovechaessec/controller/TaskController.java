@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.aprovechaessec.entity.Task;
-import com.aprovechaessec.entity.User;
+import com.aprovechaessec.entity.Users;
 import com.aprovechaessec.services.TaskService;
 import com.aprovechaessec.services.UserService;
+import com.aprovechaessec.services.UserServiceImpl;
 
 @Controller
 public class TaskController {
@@ -22,7 +23,7 @@ public class TaskController {
 	private TaskService taskService;
 	
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userService;
 	
 	@GetMapping("/addTask")
 	public String taskForm(String email, Model model, HttpSession session) {		
@@ -38,7 +39,7 @@ public class TaskController {
 		}
 		String email = (String)session.getAttribute("email");
 //		taskService.addTask(task, taskService.findUserTask(userService.findOne(email)).get(0));	
-		User user = userService.findOne(email);
+		Users user = userService.findOne(email);
 		if (user != null) {
 			taskService.addTask(task, user);	
 		}else {

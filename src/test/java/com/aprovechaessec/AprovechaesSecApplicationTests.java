@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.aprovechaessec.entity.Task;
-import com.aprovechaessec.entity.User;
+import com.aprovechaessec.entity.Users;
 import com.aprovechaessec.services.TaskService;
 import com.aprovechaessec.services.UserService;
 
@@ -30,21 +30,21 @@ public class AprovechaesSecApplicationTests {
 	@Before
 	public void InitDB() {
 		{
-			User user = new User("testUser@mail.com", "testUser", "123456");
+			Users user = new Users("testUser@mail.com", "testUser", "123456");
 			userService.creatUser(user);
 		}
 		{
-			User user = new User("testAdmin@mail.com", "testAdmin", "123456");
+			Users user = new Users("testAdmin@mail.com", "testAdmin", "123456");
 			userService.creatUser(user);
 		}
 		{
 			
-			User user = userService.findOne("testUser@mail.com");
+			Users user = userService.findOne("testUser@mail.com");
 			Task userTask = new Task("03/01/2018", "00:01", "11:00", "You need to work today", user);
 			taskService.addTask(userTask);
 		}
 		{
-			User user = userService.findOne("testAdmin@mail.com");
+			Users user = userService.findOne("testAdmin@mail.com");
 			Task userTask = new Task("03/01/2018", "00:01", "11:00", "You need to work today", user);
 			taskService.addTask(userTask);
 		}
@@ -62,11 +62,11 @@ public class AprovechaesSecApplicationTests {
 	
 	@Test
 	public void testTask() {
-		User user = userService.findOne("testUser@mail.com");
+		Users user = userService.findOne("testUser@mail.com");
 		List<Task> tasks = taskService.findUserTask(user);
 		assertNotNull(tasks);
 		
-		User admin = userService.findOne("testAdmin@mail.com");
+		Users admin = userService.findOne("testAdmin@mail.com");
 		tasks = taskService.findUserTask(admin);
 		assertNotNull(tasks);
 	}

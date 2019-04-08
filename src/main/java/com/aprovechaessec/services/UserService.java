@@ -2,14 +2,14 @@ package com.aprovechaessec.services;
 
 import java.util.List;
 
-import com.aprovechaessec.entity.User;
+import com.aprovechaessec.entity.Users;
 
 public interface UserService {
 	
-	public void creatUser(User user);
-	public void creatAdmin(User user);
-	public User findOne(String email);
+	public void creatUser(Users user);
+	public void creatAdmin(Users user);
+	public Users findOne(String email);
 	public boolean isUserPresent(String email);
-	public List<User> getFindAll();
-	public List<User> findByName(String name);
+	public List<Users> getFindAll();
+	public List<Users> findByName(String name);
 }

@@ -19,7 +19,7 @@ import static org.springframework.data.mongodb.core.query.Query.query;
 import java.util.List;
 import java.util.Optional;
 
-import com.aprovechaessec.entity.User;
+import com.aprovechaessec.entity.Users;
 
 @Repository
  public class UserRepositoryImpl {
@@ -36,24 +36,32 @@ import com.aprovechaessec.entity.User;
 		
 	}
 	
-	public User getUserByName(String email) {
-		User user = mongoOps.findOne(query(where("email").is(email)), User.class);
+	public Users getUserByEmail(String email) {
+		Users user = mongoOps.findOne(query(where("email").is(email)), Users.class);
 		return user;
 	}
 	
-	public User getUserbyEmail(String email) {
+	public Users getUserbyEmail(String email) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("email").is(email));
-		List<User> users = mongoTemplate.find(query, User.class);
+		List<Users> users = mongoTemplate.find(query, Users.class);
 		return users.get(0);
 	}
-private void useMongoTemplateForQueries() {
+	
+	public Users getUserbyName(String name) throws Exception{
+		Query query = new Query();
+		query.addCriteria(Criteria.where("name").is(name));
+		List<Users> users = mongoTemplate.find(query, Users.class);
+		return users.get(0);
+	}
+	
+	private void useMongoTemplateForQueries() {
         
 //        setupTestData();
         
         //------------------------------------------------- equality
         
-        User user = mongoOps.findOne(query(where("name").is("Asia")), User.class);
+        Users user = mongoOps.findOne(query(where("name").is("Asia")), Users.class);
         
         /*Query europeanQuery = query(where("continent.name").is("Europe"));
         List<Country> europeanCountries = mongoOps.find(europeanQuery, Country.class);

@@ -9,24 +9,24 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.aprovechaessec.entity.User;
-import com.aprovechaessec.services.UserService;
+import com.aprovechaessec.entity.Users;
+import com.aprovechaessec.services.UserServiceImpl;
 
 @Controller
 public class RegisterController {
 	
 	@Autowired 
-	private UserService userService;
+	private UserServiceImpl userService;
 
 	@GetMapping("/register")
 	public String registerForm(Model model) {
 		
-		model.addAttribute("user", new User());		
+		model.addAttribute("user", new Users());		
 		return "views/registerForm";
 	}
 	
 	@PostMapping("/register")
-	public String registerUser(@Valid User user, BindingResult bindingResult, Model model) {
+	public String registerUser(@Valid Users user, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors() || user == null) {
 			return "views/registerForm";
 		}

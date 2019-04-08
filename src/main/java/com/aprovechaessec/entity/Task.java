@@ -20,7 +20,7 @@ public class Task {
 	@NotEmpty
 	@Column(length=1000)
 	private String description;
-	private User user;
+	private Users user;
 	
 	public String getId() {
 		return id;
@@ -52,13 +52,13 @@ public class Task {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public User getUser() {
+	public Users getUser() {
 		return user;
 	}
-	public void setUser(User user) {
+	public void setUser(Users user) {
 		this.user = user;
 	}
-	public Task(String date, String startTime, String stopTime, String description, User user) {
+	public Task(String date, String startTime, String stopTime, String description, Users user) {
 		this.date = date;
 		this.startTime = startTime;
 		this.stopTime = stopTime;

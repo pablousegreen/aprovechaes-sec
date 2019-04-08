@@ -6,13 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.aprovechaessec.services.UserService;
+import com.aprovechaessec.services.UserServiceImpl;
 
 @Controller
 public class UsersController {
 	
 	@Autowired
-	UserService userService;
+	UserServiceImpl userService;
 	
 	@GetMapping("/users")
 	public String listUsers(Model model, @RequestParam(defaultValue="") String name) {
