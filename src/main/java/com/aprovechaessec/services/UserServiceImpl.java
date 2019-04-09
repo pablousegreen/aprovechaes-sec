@@ -26,7 +26,7 @@ public class UserServiceImpl implements  UserDetailsService {
 	
 	@Autowired
 	UserRepositoryImpl userRepositoryImpl;
-	
+    List<SimpleGrantedAuthority> authorities =null;
 	public void creatUser(Users user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
@@ -82,12 +82,24 @@ public class UserServiceImpl implements  UserDetailsService {
 	@Override
 	  public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		UserDetails userDetails=null;
+		 
 		try {
 		    Users user = userRepositoryImpl.getUserbyEmail(email);
 		    if(user == null) {
 		      throw new UsernameNotFoundException("User not found");
 		    }
-		    List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+		   user.getRoles().forEach(role ->{
+			   if(role.getName().indexOf("USER")!=-1) {
+				   authorities = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+			   }
+			   if(role.getName().indexOf("ADMIN")!=-1) {
+				   authorities = Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+			   }
+		   }); 
+		// @formatter:on
+
+//		     authorities = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+		   if(authorities != null)
 		    userDetails= new User(user.getName(), user.getPassword(), authorities);
 		}catch(Exception ex) {
 			System.out.println(ex);
