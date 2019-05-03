@@ -36,7 +36,7 @@ public class RegisterController {
 			model.addAttribute("user", user);	
 			return "views/registerForm";
 		}		
-		userService.creatUser(user);
+		userService.creatAdmin(user);
 		return "views/success";
 	}
 }

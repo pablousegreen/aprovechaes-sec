@@ -1,28 +1,19 @@
 package com.aprovechaessec.security.jwtsecurity.config;
 
 
-import java.util.Collections;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.aprovechaessec.security.jwtsecurity.security.JwtAuthenticationEntryPoint;
 import com.aprovechaessec.security.jwtsecurity.security.JwtAuthenticationProvider;
-import com.aprovechaessec.security.jwtsecurity.security.JwtAuthenticationTokenFilter;
-import com.aprovechaessec.security.jwtsecurity.security.JwtSuccessHandler;
 import com.aprovechaessec.services.UserServiceImpl;
 
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -33,10 +24,10 @@ import com.aprovechaessec.services.UserServiceImpl;
 public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-    @Autowired
-    private JwtAuthenticationProvider authenticationProvider;
-    @Autowired
-    private JwtAuthenticationEntryPoint entryPoint;
+//    @Autowired
+//    private JwtAuthenticationProvider authenticationProvider;
+//    @Autowired
+//    private JwtAuthenticationEntryPoint entryPoint;
     @Autowired
     UserServiceImpl userService;
 

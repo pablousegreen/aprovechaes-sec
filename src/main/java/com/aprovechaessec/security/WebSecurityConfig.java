@@ -1,16 +1,12 @@
 package com.aprovechaessec.security;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @Configuration
-@ConditionalOnProperty(value = "app.security.basic.enabled", havingValue = "false")
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+//@ConditionalOnProperty(value = "app.security.basic.enabled", havingValue = "false")
+public class WebSecurityConfig /*extends WebSecurityConfigurerAdapter*/{
 
 //	@Override
 //	protected void configure(HttpSecurity http) throws Exception {
@@ -51,9 +47,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //        return http.build();
 //    }
 	
-	@Override
-    protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests().antMatchers("/").permitAll();
-    }
+//	@Override
+//    protected void configure(HttpSecurity http) throws Exception{
+//        http.authorizeRequests().antMatchers("/").permitAll();
+//    }
 	
 }
