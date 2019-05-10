@@ -12,8 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.aprovechaessec.security.jwtsecurity.security.JwtAuthenticationEntryPoint;
-import com.aprovechaessec.security.jwtsecurity.security.JwtAuthenticationProvider;
 import com.aprovechaessec.services.UserServiceImpl;
 
 //@EnableGlobalMethodSecurity(prePostEnabled = true)

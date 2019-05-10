@@ -22,9 +22,17 @@ public class Users {
 	private String name;
 	@Size(min=4)
 	private String password;
+	
+	private String serial;
 	private List<Task> tasks;
 	private List<Role> roles;
 	
+	public String getSerial() {
+		return serial;
+	}
+	public void setSerial(String serial) {
+		this.serial = serial;
+	}
 	public String getId() {
 		return id;
 	}

@@ -41,6 +41,7 @@ public class UserServiceImpl implements  UserDetailsService {
 	public void creatAdmin(Users user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
+		user.setSerial("");
 //		Role role = new Role("ROLE_ADMIN");
 		Role role = new Role("ADMIN");
 		List<Role> roles = new ArrayList<>();
