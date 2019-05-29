@@ -25,7 +25,7 @@ public class ProfileController {
 		String name = principal.getName();
 		Users user = userService.findByName(name);
 		
-		model.addAttribute("task", taskService.findUserTask(user) );
+		model.addAttribute("tasks", taskService.findUserTask(user) );
 		
 		return "views/profile";
 	}
